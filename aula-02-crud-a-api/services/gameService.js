@@ -34,6 +34,16 @@ class gameService {
             console.log(error)
         }
     }
+
+    // MÉTODO PARA EXCLUIR O JOGO 
+    async Delete(id) {
+        try {
+            await Game.findByIdAndDelete(id)
+            console.log(`O jogo com a id ${id} foi deletado.`)
+        } catch (error){
+            console.log(error)
+        }
+    }
 }
 // Exportando a classe
 export default new gameService()

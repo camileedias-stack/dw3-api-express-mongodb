@@ -10,4 +10,5 @@ gameRoutes.get("/games", gameController.getAllGames)
 // Endpoint (rota) para cadastrar um jogo
 gameRoutes.post("/games", gameController.createGame)
 
+gameRoutes.delete("/games/:id", gameController.deleteGame)
 export default gameRoutes;

@@ -3,6 +3,9 @@
 // Importando o service
 import gameService from '../services/gameService.js';
 
+// Importando o objetoID do mongodb
+import { ObjectId } from 'mongodb';
+
 // Função que irá tratar a requisição para LISTAR os jogos
 const getAllGames = async (req, res) => {
     try {
@@ -31,6 +34,21 @@ const createGame = async(req, res) => {
         res.status(500).json({error:"Erro interno do servidor."})
     }
 }
+// Função que trata a requisição para EXCLUIR um jogo
+const deleteGame = async (req, res) => {
+    try {
+        const id = req.params.id;
+        if (ObjectId.isValid(id)){
+            await gameService.Delete(id);
+            res.sendStatus(204);
+        } else {
+        res.status(400).json({error: 'requisição mal formada'})
+    }
+    } catch (error){
+        console.log(error);
+        res.status(500).json({error: 'Erro interno no servidor'})
+    } 
+}
 
 // Exportando as funções
-export default { getAllGames, createGame }
+export default { getAllGames, createGame, deleteGame }
