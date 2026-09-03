@@ -1,0 +1,19 @@
+//Imortar o model 
+import User from "../models/Users.js"
+
+class userService {
+    async Create(email, password){
+        try{
+        const newUser = new User({
+        
+            email,
+            password
+        });
+    await newUser.save();
+    }catch (error) {
+        console.log(error);
+    }
+    }
+}
+
+export default new userService()
