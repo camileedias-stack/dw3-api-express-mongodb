@@ -1,7 +1,7 @@
 // Importar o Express
 import express from "express";
 // Importar o Mongoose
-import mongoose from "mongoose"
+import mongoose from './config/db.connection.js'
 // Importar o Model de Game
 import Game from "./models/Games.js"
 // Importar o Model de Usuário
